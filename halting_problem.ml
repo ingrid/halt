@@ -9,10 +9,10 @@ let g (l,m,r,s) = let (mn,ln) = p l in (ln,mn,m::r,s);;
 let d (l,m,r,s) = let (mn,rn) = p r in (m::l,mn,rn,s);;
 
 let print_id t (l,m,r,s) =
-  Printf.printf "%d:%s%s[%d]%s then apply %s\n" s
+  Printf.printf "%s%s[%d]%s then apply %s (s = %d)\n" 
     (String.make (2 * (40 - List.length l) + if l == [] then 0 else 1) ' ')
     ((String.concat " " (List.rev (List.map string_of_int l)))) m
-    (String.concat " " (List.map string_of_int r)) t ;
+    (String.concat " " (List.map string_of_int r)) t s;
   (l,m,r,s) ;;
 
 let rec f (l,m,r,s) = ignore (print_id "f" (l,m,r,s)) ;
